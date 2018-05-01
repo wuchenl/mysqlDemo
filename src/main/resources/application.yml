@@ -1,0 +1,33 @@
+#自定义配置多个数据源
+datasource:
+#主数据源
+  master:
+    jdbcUrl: jdbc:mysql://localhost:3306/health?characterEncoding=utf8&useSSL=false
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+#    从数据源
+  slave:
+    jdbcUrl: jdbc:mysql://localhost:3306/ui?characterEncoding=utf8&useSSL=false
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+
+  read:
+    get,select,count,list,query
+  write:
+    add,insert,update,delete,remove,create
+
+#    配置mybatis相关参数
+mybatis:
+  type-aliases-package: com.letters7.wuchen.model
+  mapper-locations: classpath:mappers/*.xml
+
+#  显示SQL
+spring:
+  jpa:
+    show-sql: true
+logging:
+  level:
+    com.letters7.wuchen.dao: DEBUG
+

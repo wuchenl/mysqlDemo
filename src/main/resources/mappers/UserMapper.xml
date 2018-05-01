@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.letters7.wuchen.dao.UserDao">
+
+    <!--根据用户ID获取用户信息-->
+    <select id="selectByUserId" resultType="com.letters7.wuchen.model.User">
+        select user_id as userId,username ,password,name ,last_login_time as lastLoginTime from autz_user
+        where user_id=#{userId}
+    </select>
+
+    <!--根据用户ID更新最后登录时间-->
+    <update id="updateLoginTimeByUserId">
+        update autz_user SET last_login_time=now()
+        where user_id=#{userId}
+    </update>
+
+    <update id="updateLoginTimeWithError">
+        update autz_user SET
+    </update>
+</mapper>
